@@ -1,7 +1,9 @@
 // Snack2
 // Creare un array di oggetti di squadre di calcio. Ogni squadra avrà diverse proprietà: nome, punti fatti, falli subiti. Nome sarà l’unica proprietà da compilare, le altre saranno tutte settate a 0. Generare numeri random al posto degli 0 nelle proprietà: Punti fatti e falli subiti. Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 
-var squadre = [
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) ) + min;
+
+const squadre = [
     {
         nome: "Inter",
         puntiFatti: 0,
@@ -22,69 +24,25 @@ var squadre = [
         puntiFatti: 0,
         falliSubiti: 0,
     },
-    {
-        nome: "Napoli",
-        puntiFatti: 0,
-        falliSubiti: 0,
-    },
-    {
-        nome: "Roma",
-        puntiFatti: 0,
-        falliSubiti: 0,
-    },
-    {
-        nome: "Lazio",
-        puntiFatti: 0,
-        falliSubiti: 0,
-    },
 ];
 
-for (var i = 0; i < squadre.length; i++) {
-    squadre[i].puntiFatti = createRandomNumber(40, 100);
-    squadre[i].falliSubiti = createRandomNumber(40, 80);
+const squadreFalliSubiti = [];
+
+for (let i = 0; i < squadre.length; i++) {
+    
+    const squadra = squadre[i];
+    squadra.puntiFatti = getRandomNumber(40, 100);
+    squadra.falliSubiti = getRandomNumber(40, 80);
 }
 
-console.log(squadre);
+const { nome, falliSubiti } = squadra;
+console.log("nome:", nome);
+console.log("falliSubiti:", falliSubiti);
 
-var nuovoArray = [
-    {
-        nome: "",
-        falliSubiti: 0,
-    },
-    {
-        nome: "",
-        falliSubiti: 0,
-    },
-    {
-        nome: "",
-        falliSubiti: 0,
-    },
-    {
-        nome: "",
-        falliSubiti: 0,
-    },
-    {
-        nome: "",
-        falliSubiti: 0,
-    },
-    {
-        nome: "",
-        falliSubiti: 0,
-    },
-    {
-        nome: "",
-        falliSubiti: 0,
-    }
-];
+squadreFalliSubiti.push({
+    nome,
+    falliSubiti
+});
 
-for (var i = 0; i < squadre.length; i++) {
-    const {nome, falliSubiti} = squadre[i];
-    console.log(nome, falliSubiti);
-}
+console.log(squadreFalliSubiti);
 
-
-// -----------------FUNCTIONS-----------------
-// funzione per generare un numero
-function createRandomNumber (min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-};

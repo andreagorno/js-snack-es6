@@ -26,13 +26,19 @@ const myArray = [{
 biciLeggera = myArray[0];
 
 for (var i = 1; i < myArray.length; i++) {
-    var biciCorrente = myArray[i];
+  let biciCorrente = myArray[i];
 
-    if (biciCorrente.peso < biciLeggera.peso) {
-        biciLeggera = biciCorrente;
-    }
+  if (biciCorrente.peso < biciLeggera.peso) {
+      biciLeggera = biciCorrente;
+  }
 }
 
-console.log(biciLeggera);
-document.getElementById("nome").innerHTML = biciLeggera.nome;
-document.getElementById("peso").innerHTML = biciLeggera.peso;
+const container = document.getElementById("container");
+const { nome, peso } = biciLeggera;
+
+console.log(nome);
+console.log(peso);
+
+container.innerHTML = 
+  "<h1>La bici più leggera </h1> <ul><li>Nome: <strong>${nome}</strong></li><li>Nome: <strong>${peso}</strong></li></ul>";
+
